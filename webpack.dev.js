@@ -6,9 +6,27 @@ module.exports = merge(common, {
   devtool: "eval-source-map",
   module: {
     rules: [
+      // css-modules styles
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.module\.scss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                exportLocalsConvention: "camelCase",
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
+      // global styles
+      {
+        test: /^((?!\.module).)*scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

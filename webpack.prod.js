@@ -7,9 +7,27 @@ module.exports = merge(common, {
   devtool: "source-map",
   module: {
     rules: [
+      // css-modules styles
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.module\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+                exportLocalsConvention: "camelCase",
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
+      // global styles
+      {
+        test: /^((?!\.module).)*scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
