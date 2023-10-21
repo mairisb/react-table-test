@@ -5,7 +5,8 @@
   "main": "src/index.tsx",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "start": "webpack server --config webpack.dev.js",
+    "start": "concurrently --names=\"style-types,webpack\" \"npm run generate-style-types:watch\" \"npm run start:dev\"",
+    "start:dev": "webpack server --config webpack.dev.js",
     "generate-style-types": "typed-scss-modules src/**/*.module.scss --nameFormat=none --exportType=default",
     "generate-style-types:watch": "npm run generate-style-types -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/react": "^18.2.29",
     "@types/react-dom": "^18.2.14",
+    "concurrently": "^8.2.2",
     "css-loader": "^6.8.1",
     "dotenv": "^16.3.1",
     "html-webpack-plugin": "^5.5.3",
