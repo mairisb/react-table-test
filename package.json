@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack server --config webpack.dev.js",
-    "generate-style-types": "typed-scss-modules src/**/*.module.scss",
+    "generate-style-types": "typed-scss-modules src/**/*.module.scss --nameFormat=none --exportType=default",
     "generate-style-types:watch": "npm run generate-style-types -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

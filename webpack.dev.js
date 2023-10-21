@@ -31,6 +31,7 @@ module.exports = merge(common, {
     ],
   },
   devServer: {
+    open: true,
     port: 4200,
     historyApiFallback: true,
   },

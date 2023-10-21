@@ -1,0 +1,17 @@
+.child-component {
+  color: red;
+
+  &--modifier {
+    font-weight: bold;
+  }
+
+  &__element {
+    color: green;
+  }
+  
+  :global {
+    .test-class {
+      color: blue;
+    }
+  }
+}

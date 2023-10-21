@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import { Child } from "./child/child-another.component";
+import { CssModulesTest } from "./css-modules-test/css-modules-test";
 import { NavigationBar } from "./navigation-bar.component";
 
 export const App: React.FC = () => {
@@ -7,7 +7,7 @@ export const App: React.FC = () => {
     <main>
       <NavigationBar className="mb-2" />
       <Container>
-        <Child />
+        <CssModulesTest />
         <p>Hello, world!</p>
       </Container>
     </main>
