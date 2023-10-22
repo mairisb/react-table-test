@@ -1,12 +1,8 @@
-import { observer, useLocalObservable } from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
+import { useRootStore } from "../../stores/root/use-root-store.hook";
 
 export const MobxTest: React.FC = observer(function MobxTest() {
-  const countStore = useLocalObservable(() => ({
-    count: 0,
-    increment() {
-      this.count++;
-    },
-  }));
+  const { countStore } = useRootStore();
 
   return (
     <div>
